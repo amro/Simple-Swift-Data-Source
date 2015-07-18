@@ -12,8 +12,6 @@ class TableViewController: UITableViewController, DataSourceInjectable {
 
     var dataSource: DataSource? {
         didSet {
-//            self.tableView?.reloadData()
-            
             dataSource?.registerForUpdates { [unowned self] (updatedItems: [DataSourceItem]) -> Void in
                 let indexPaths = updatedItems.map({ (item: DataSourceItem) -> NSIndexPath in
                     NSIndexPath(forItem: item.index, inSection: 0)
